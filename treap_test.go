@@ -15,11 +15,6 @@ func TestTreap(t *testing.T) {
 	if x.x != 7 {
 		t.Fail()
 	}
-
-	for i := 1; i < 10000000; i++ {
-		x = x.add(uint32(i), rand.Uint32())
-	}
-	//traverse(x)
 }
 
 func BenchmarkTreap(b *testing.B) {
@@ -28,3 +23,4 @@ func BenchmarkTreap(b *testing.B) {
 		x = x.add(uint32(i), rand.Uint32())
 	}
 }
+
