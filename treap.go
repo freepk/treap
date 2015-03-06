@@ -76,7 +76,7 @@ func (t *treap) add(x, y uint32) *treap {
 		p.l[d] = n.rotate(f)
 	}
 	if (i == 0) && (p.l[d].y > p.y) {
-		t = p.rotate(d)
+		return p.rotate(d)
 	}
 	return t
 }
