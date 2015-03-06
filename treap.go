@@ -60,12 +60,6 @@ func (t *treap) add(x, y uint32) *treap {
 		}
 		i++
 	}
-	if n != nil {
-		panic("n != nil")
-	}
-	if i < 1 {
-		panic("i < 1")
-	}
 	n = newTreap(x, y, nil, nil)
 	i--
 	r = &s[i]
@@ -80,18 +74,10 @@ func (t *treap) add(x, y uint32) *treap {
 		p = r.t
 		d = r.d
 		p.l[d] = n.rotate(f)
-		if p.l[d].x != x {
-			panic("p.l[d].x != x")
-		}
 	}
-
 	if (i == 0) && (p.l[d].y > p.y) {
-		if p.l[d].x != x {
-			panic("p.l[d].x != x")
-		}
-		return p.rotate(d)
+		t = p.rotate(d)
 	}
-
 	return t
 }
 
