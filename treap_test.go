@@ -6,21 +6,25 @@ import (
 )
 
 func TestTreap(t *testing.T) {
-	x := newTreap(4, 6, nil, nil)
-	x = x.add(6, 2)
-	x = x.add(13, 8)
-	x = x.add(7, 10)
-	x = x.add(11, 3)
-
-	if x.x != 7 {
+	x := newNode(0)
+	for i := 0; i < 1000; i++ {
+		x, _ = x.insert(rand.Int())
+	}
+	if isValid(x) == 0 {
 		t.Fail()
 	}
 }
 
-func BenchmarkTreap(b *testing.B) {
-	x := newTreap(0, rand.Uint32(), nil, nil)
+func BenchmarkInsSeq(b *testing.B) {
+	x := newNode(0)
 	for i := 1; i <= b.N; i++ {
-		x = x.add(uint32(i), rand.Uint32())
+		x, _ = x.insert(i)
 	}
 }
 
+func BenchmarkInsRnd(b *testing.B) {
+	x := newNode(0)
+	for i := 1; i <= b.N; i++ {
+		x, _ = x.insert(rand.Int())
+	}
+}
